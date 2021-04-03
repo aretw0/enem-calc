@@ -69,6 +69,12 @@ export default {
     },
     selectedCurso() {
       this.result.show = false
+    },
+    notas: {
+      deep: true,
+      handler() {
+        this.result.show = false
+      }
     }
   },
   methods: {
@@ -86,7 +92,7 @@ export default {
       this.Areas.forEach(({id}) => {
         somaPesos += this.selectedCurso.pesos[id]
 
-        resultsCalc += (this.selectedCurso.pesos[id] * this.notas[id])
+        resultsCalc += (this.selectedCurso.pesos[id] * parseFloat(this.notas[id]))
       })
 
       resultsCalc /= somaPesos
